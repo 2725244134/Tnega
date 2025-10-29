@@ -23,6 +23,8 @@ from .models import (
     UserProfile,
 )
 
+from .crawler import TwitterCrawler, create_crawler
+
 __all__ = [
     # 核心实体
     "User",
@@ -39,4 +41,8 @@ __all__ = [
     "Timeline",
     "SearchResults",
     "UserProfile",
+    
+    # API 客户端
+    "TwitterCrawler",
+    "create_crawler",
 ]
