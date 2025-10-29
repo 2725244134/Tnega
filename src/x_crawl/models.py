@@ -7,7 +7,7 @@ Twitter API 数据模型定义
 """
 
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Literal, Any
 
 from pydantic import BaseModel, Field
@@ -246,6 +246,26 @@ class Tweet(BaseModel):
         examples=["Twitter for iPhone", "Twitter Web App"]
     )
 
+    conversation_id: str | None = Field(
+        default=None,
+        description="所属会话 ID（用于追踪评论线程）"
+    )
+
+    context_annotations: list[dict[str, Any]] | None = Field(
+        default=None,
+        description="Twitter 提供的上下文注释（主题、领域等）"
+    )
+
+    entities: dict[str, Any] | None = Field(
+        default=None,
+        description="实体解析结果（hashtags、mentions、urls 等）"
+    )
+
+    geo: dict[str, Any] | None = Field(
+        default=None,
+        description="地理位置信息（place_id 等）"
+    )
+
 
 # ============================================
 # 扩展推文（包含关联数据）
@@ -282,6 +302,65 @@ class TweetWithIncludes(BaseModel):
 # ============================================
 # API 响应容器
 # ============================================
+
+
+class SearchMetadata(BaseModel):
+    """搜索结果的运行时元信息"""
+
+    query: str | None = Field(
+        default=None,
+        description="原始查询语句"
+    )
+
+    label: str | None = Field(
+        default=None,
+        description="便于识别的数据标签/别名"
+    )
+
+    start_time: datetime | None = Field(
+        default=None,
+        description="搜索起始时间"
+    )
+
+    end_time: datetime | None = Field(
+        default=None,
+        description="搜索结束时间"
+    )
+
+    scraped_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        description="数据抓取时间（UTC）"
+    )
+
+    source: Literal["search_all", "search_recent", "manual"] = Field(
+        ...,  # source 必填，帮助跟踪数据来源
+        description="数据来源类型"
+    )
+
+    language: str | None = Field(
+        default=None,
+        description="语言过滤（如 lang:ar）"
+    )
+
+    page_count: int | None = Field(
+        default=None,
+        description="抓取的分页次数"
+    )
+
+    total_collected: int | None = Field(
+        default=None,
+        description="抓取到的推文数量"
+    )
+
+    request_parameters: dict[str, Any] = Field(
+        default_factory=dict,
+        description="额外请求参数（max_results、next_token 等）"
+    )
+
+    notes: str | None = Field(
+        default=None,
+        description="补充说明"
+    )
 
 class TwitterAPIResponse(BaseModel):
     """
@@ -390,6 +469,11 @@ class SearchResults(BaseModel):
         ge=0
     )
 
+    metadata: SearchMetadata | None = Field(
+        default=None,
+        description="搜索元信息（查询、时间范围、抓取批次等）"
+    )
+
 
 class UserProfile(BaseModel):
     """
@@ -411,4 +495,3 @@ class UserProfile(BaseModel):
         default=None,
         description="置顶推文"
     )
-

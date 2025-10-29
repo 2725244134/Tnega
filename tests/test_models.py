@@ -19,6 +19,7 @@ from src.x_crawl.models import (
     Timeline,
     SearchResults,
     UserProfile,
+    SearchMetadata,
 )
 
 
@@ -65,6 +66,7 @@ def test_tweet_model():
     assert tweet.id == "1234567890123456789"
     assert tweet.text == "just setting up my twttr"
     assert tweet.like_count == 250_000
+    assert tweet.conversation_id is None
     
     # 测试序列化
     data = tweet.model_dump()
@@ -133,16 +135,30 @@ def test_timeline_model():
 
 def test_search_results_model():
     """测试 SearchResults 容器"""
+    metadata = SearchMetadata(
+        query="python",
+        source="search_recent",
+        page_count=1,
+    )
     results = SearchResults(
         tweets=[],
         next_token="abc123",
         result_count=0,
         total_count=1_000_000,
+        metadata=metadata,
     )
     
     assert results.result_count == 0
     assert results.next_token == "abc123"
     assert results.total_count == 1_000_000
+    assert results.metadata and results.metadata.source == "search_recent"
+
+
+def test_search_metadata_defaults():
+    """SearchMetadata 应该自动填充抓取时间"""
+    metadata = SearchMetadata(source="search_all")
+    assert metadata.source == "search_all"
+    assert metadata.scraped_at is not None
 
 
 def test_user_profile_model():

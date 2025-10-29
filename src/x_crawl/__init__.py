@@ -24,6 +24,15 @@ from .models import (
 )
 
 from .crawler import TwitterCrawler, create_crawler
+from .storage import (
+    save_tweets_json,
+    save_tweets_jsonl,
+    save_search_results_json,
+    save_results,
+    load_tweets_json,
+    load_tweets_jsonl,
+    load_search_results_json,
+)
 
 __all__ = [
     # 核心实体
@@ -45,4 +54,13 @@ __all__ = [
     # API 客户端
     "TwitterCrawler",
     "create_crawler",
+    
+    # 存储功能
+    "save_tweets_json",
+    "save_tweets_jsonl",
+    "save_search_results_json",
+    "save_results",
+    "load_tweets_json",
+    "load_tweets_jsonl",
+    "load_search_results_json",
 ]

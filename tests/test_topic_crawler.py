@@ -7,12 +7,86 @@
 
 import asyncio
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 # 添加项目根目录到 Python 路径
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.x_crawl import TwitterCrawler
+from src.x_crawl.models import SearchResults, Tweet, User, SearchMetadata
+
+
+def test_search_all_tweets_paginated(monkeypatch):
+    """验证自动分页逻辑可以合并多页数据"""
+
+    async def _run():
+        crawler = TwitterCrawler(bearer_token="DUMMY")
+
+        tweet_a = Tweet(
+            id="1",
+            text="test tweet A",
+            created_at=datetime(2025, 1, 1, 12, tzinfo=timezone.utc),
+            author_id="100",
+        )
+        tweet_b = Tweet(
+            id="2",
+            text="test tweet B",
+            created_at=datetime(2025, 1, 1, 13, tzinfo=timezone.utc),
+            author_id="101",
+        )
+
+        user_a = User(id="100", username="user100", name="User 100")
+        user_b = User(id="101", username="user101", name="User 101")
+
+        async def fake_search_all_tweets(**kwargs):
+            if kwargs.get("next_token"):
+                return SearchResults(
+                    tweets=[tweet_b],
+                    users={user_b.id: user_b},
+                    media={},
+                    next_token=None,
+                    result_count=1,
+                    total_count=2,
+                    metadata=SearchMetadata(
+                        query="fake",
+                        source="search_all",
+                        page_count=1,
+                        total_collected=1,
+                    ),
+                )
+            return SearchResults(
+                tweets=[tweet_a],
+                users={user_a.id: user_a},
+                media={},
+                next_token="NEXT",
+                result_count=1,
+                total_count=2,
+                metadata=SearchMetadata(
+                    query="fake",
+                    source="search_all",
+                    page_count=1,
+                    total_collected=1,
+                ),
+            )
+
+        monkeypatch.setattr(crawler, "search_all_tweets", fake_search_all_tweets)
+
+        results = await crawler.search_all_tweets_paginated(
+            "fake",
+            start_time="2025-01-01T00:00:00Z",
+            end_time="2025-01-02T00:00:00Z",
+            max_pages=5,
+            page_pause=0,
+        )
+
+        assert results.result_count == 2
+        assert results.metadata and results.metadata.page_count == 2
+        assert {t.id for t in results.tweets} == {"1", "2"}
+
+        await crawler.close()
+
+    asyncio.run(_run())
 
 
 async def test_search_all_tweets():
