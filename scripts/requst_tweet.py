@@ -106,7 +106,7 @@ if __name__ == "__main__":
     api_key = "new1_2d3ec9c7e1104ca1a6a062f6a87869ea"
 
     # query by keywords
-    query = "93 "
+    query = "China 93 parade since:2025-09-01 until:2025-10-31"
 
     # Retrieving all tweets from a specific account within a specified time period.and you can also filter data based on the number of likes. 
     # For the usage of query parameters, please refer to the relevant documentation.
