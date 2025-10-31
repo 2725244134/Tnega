@@ -20,7 +20,7 @@ def fetch_all_tweets(query: str, api_key: str) -> List[Dict]:
         - Continues fetching beyond Twitter's initial 800-1200 tweet limit
         - Includes error handling for API failures
     """
-    base_url = "https://api.twitterapi.io/twitter/tweet/replies"
+    base_url = "https://api.twitterapi.io/twitter/tweet/thread_context"
     headers = {"x-api-key": api_key}
     all_tweets = []
     seen_tweet_ids = set()  # Set to track unique tweet IDs
@@ -120,5 +120,5 @@ if __name__ == "__main__":
     
     # Save to file
     import json
-    with open('tweets_replies.json', 'w') as f:
+    with open('tweets_thread.json', 'w') as f:
         json.dump(tweets, f, indent=2)

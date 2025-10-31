@@ -1,0 +1,1070 @@
+[
+  {
+    "type": "tweet",
+    "id": "1970339354028679280",
+    "url": "https://x.com/XH_Lee23/status/1970339354028679280",
+    "twitterUrl": "https://twitter.com/XH_Lee23/status/1970339354028679280",
+    "text": "\"China hasn\u2019t disclosed all its military equipment. Those in the 93 parade are all not the latest,\" said a PLA commentator at the Changchun Airshow. \n\nThat\u2019s the difference between China and the US: we don\u2019t show what we don\u2019t have on PPT. We show what we already have years ago. https://t.co/pFmWYQXIvc",
+    "source": "Twitter for iPhone",
+    "retweetCount": 32,
+    "replyCount": 12,
+    "likeCount": 273,
+    "quoteCount": 3,
+    "viewCount": 11180,
+    "createdAt": "Tue Sep 23 04:08:03 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 24,
+    "isReply": false,
+    "inReplyToId": null,
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": null,
+    "inReplyToUsername": null,
+    "author": {
+      "type": "user",
+      "userName": "XH_Lee23",
+      "url": "https://x.com/XH_Lee23",
+      "twitterUrl": "https://twitter.com/XH_Lee23",
+      "id": "1415132116761804801",
+      "name": "Li Zexin \u674e\u6cfd\u6b23",
+      "isVerified": false,
+      "isBlueVerified": true,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1774124231770718208/sDeIklNo_normal.jpg",
+      "coverPicture": "https://pbs.twimg.com/profile_banners/1415132116761804801/1752712465",
+      "description": "Chinese Journalist @XHNews. News on China. Views PERSONAL",
+      "location": "Beijing",
+      "followers": 107408,
+      "following": 4531,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": false,
+      "createdAt": "Wed Jul 14 02:12:55 +0000 2021",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": [
+            {
+              "id_str": "0",
+              "indices": [
+                19,
+                26
+              ],
+              "name": "",
+              "screen_name": "XHNews"
+            }
+          ]
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 10383,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 3765,
+      "statusesCount": 5490,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [
+        "1903390497982275995"
+      ],
+      "profile_bio": "Chinese Journalist @XHNews. News on China. Views PERSONAL"
+    },
+    "extendedEntities": {
+      "media": [
+        {
+          "additional_media_info": {
+            "monetizable": false
+          },
+          "display_url": "pic.twitter.com/pFmWYQXIvc",
+          "expanded_url": "https://twitter.com/XH_Lee23/status/1970339354028679280/video/1",
+          "ext_media_availability": {
+            "status": "Available"
+          },
+          "id_str": "1970339279835725824",
+          "indices": [
+            280,
+            303
+          ],
+          "media_key": "13_1970339279835725824",
+          "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/1970339279835725824/img/UQUWxVoCa--IwQR3.jpg",
+          "original_info": {
+            "width": 720,
+            "height": 1280,
+            "focus_rects": []
+          },
+          "sizes": {
+            "large": {
+              "w": 720,
+              "h": 1280
+            }
+          },
+          "type": "video",
+          "url": "https://t.co/pFmWYQXIvc",
+          "video_info": {
+            "aspect_ratio": [
+              9,
+              16
+            ],
+            "duration_millis": 9054,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/1970339279835725824/pl/2Kzv2SQKlHStIBup.m3u8?tag=21",
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/1970339279835725824/vid/avc1/320x568/fkxeEOs74qP_64RZ.mp4?tag=21",
+                "content_type": "video/mp4",
+                "bitrate": 632000
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/1970339279835725824/vid/avc1/480x852/6Lf1ztpHGvk27dGV.mp4?tag=21",
+                "content_type": "video/mp4",
+                "bitrate": 950000
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/1970339279835725824/vid/avc1/720x1280/i8EwuEo9JdElVqpG.mp4?tag=21",
+                "content_type": "video/mp4",
+                "bitrate": 2176000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": []
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970600864105517532",
+    "url": "https://x.com/NewStuffGuru/status/1970600864105517532",
+    "twitterUrl": "https://twitter.com/NewStuffGuru/status/1970600864105517532",
+    "text": "@XH_Lee23 That's literally what the US does too. Is your translator broken and meant to say something else?",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 2,
+    "likeCount": 2,
+    "quoteCount": 0,
+    "viewCount": 219,
+    "createdAt": "Tue Sep 23 21:27:12 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "NewStuffGuru",
+      "url": "https://x.com/NewStuffGuru",
+      "twitterUrl": "https://twitter.com/NewStuffGuru",
+      "id": "1861433301665488897",
+      "name": "Atomsk",
+      "isVerified": false,
+      "isBlueVerified": true,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1979759191620263936/wHl04aZu_normal.jpg",
+      "coverPicture": "https://pbs.twimg.com/profile_banners/1861433301665488897/1761701611",
+      "description": "Bellum Sacrum, Memes Profanum.\nDeus Vult.",
+      "location": "Oklahoma, USA",
+      "followers": 1314,
+      "following": 2460,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Tue Nov 26 15:34:44 +0000 2024",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "display_url": "medium.com/@Atomsk_King",
+              "expanded_url": "https://medium.com/@Atomsk_King",
+              "indices": [
+                0,
+                23
+              ],
+              "url": "https://t.co/1b5TIIr3V9"
+            }
+          ]
+        },
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 10533,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 833,
+      "statusesCount": 7487,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": "Bellum Sacrum, Memes Profanum.\nDeus Vult."
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970485701071568935",
+    "url": "https://x.com/karnayush74/status/1970485701071568935",
+    "twitterUrl": "https://twitter.com/karnayush74/status/1970485701071568935",
+    "text": "@XH_Lee23 Nice bragging \ud83d\udc4f but all your products were trash  these ships \ud83e\udd23 and your air defence system \ud83e\udd23 which protects both pakistan capital as well Chinese capital already exposed https://t.co/0IsalJPtNM",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 2,
+    "likeCount": 1,
+    "quoteCount": 0,
+    "viewCount": 270,
+    "createdAt": "Tue Sep 23 13:49:35 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "karnayush74",
+      "url": "https://x.com/karnayush74",
+      "twitterUrl": "https://twitter.com/karnayush74",
+      "id": "1943924153645772801",
+      "name": "Amarna",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1943924305126985728/M3qspPac_normal.jpg",
+      "coverPicture": "https://pbs.twimg.com/profile_banners/1943924153645772801/1752560771",
+      "description": "Love ancient India, Egypt, mesopotamia maya rome and greek \ncivilization \ud83e\udd70\nHate fake civilization like china,\nOpen to debate 24x7 \ud83d\ude01\n\nFollow me",
+      "location": "India",
+      "followers": 83,
+      "following": 83,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Sat Jul 12 06:43:37 +0000 2025",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 25960,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 849,
+      "statusesCount": 11744,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [
+        "1980174984132825399"
+      ],
+      "profile_bio": "Love ancient India, Egypt, mesopotamia maya rome and greek \ncivilization \ud83e\udd70\nHate fake civilization like china,\nOpen to debate 24x7 \ud83d\ude01\n\nFollow me"
+    },
+    "extendedEntities": {
+      "media": [
+        {
+          "display_url": "pic.twitter.com/0IsalJPtNM",
+          "expanded_url": "https://twitter.com/karnayush74/status/1970485701071568935/photo/1",
+          "ext_media_availability": {
+            "status": "Available"
+          },
+          "features": {
+            "large": {
+              "faces": [
+                {
+                  "x": 669,
+                  "y": 336,
+                  "h": 165,
+                  "w": 165
+                },
+                {
+                  "x": 468,
+                  "y": 350,
+                  "h": 158,
+                  "w": 158
+                },
+                {
+                  "x": 178,
+                  "y": 428,
+                  "h": 173,
+                  "w": 173
+                }
+              ]
+            }
+          },
+          "id_str": "1970485533823397889",
+          "indices": [
+            181,
+            204
+          ],
+          "media_key": "3_1970485533823397889",
+          "media_url_https": "https://pbs.twimg.com/media/G1iSJyaW8AEMqfq.jpg",
+          "original_info": {
+            "width": 1200,
+            "height": 800,
+            "focus_rects": [
+              {
+                "x": 0,
+                "y": 128,
+                "w": 1200,
+                "h": 672
+              },
+              {
+                "x": 290,
+                "y": 0,
+                "w": 800,
+                "h": 800
+              },
+              {
+                "x": 339,
+                "y": 0,
+                "w": 702,
+                "h": 800
+              },
+              {
+                "x": 490,
+                "y": 0,
+                "w": 400,
+                "h": 800
+              },
+              {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 800
+              }
+            ]
+          },
+          "sizes": {
+            "large": {
+              "w": 1200,
+              "h": 800
+            }
+          },
+          "type": "photo",
+          "url": "https://t.co/0IsalJPtNM",
+          "allow_download_status": {
+            "allow_download": true
+          }
+        }
+      ]
+    },
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970678859105538443",
+    "url": "https://x.com/ReallyJeffed/status/1970678859105538443",
+    "twitterUrl": "https://twitter.com/ReallyJeffed/status/1970678859105538443",
+    "text": "@XH_Lee23 Spot on...    \nAmerica should be more worried about\nthe toys that didn't appear,\nin China's Military Parade.",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 1,
+    "quoteCount": 0,
+    "viewCount": 121,
+    "createdAt": "Wed Sep 24 02:37:08 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "ReallyJeffed",
+      "url": "https://x.com/ReallyJeffed",
+      "twitterUrl": "https://twitter.com/ReallyJeffed",
+      "id": "1468461751142617089",
+      "name": "Jeffed",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1676453016235548672/iRIRe7FM_normal.jpg",
+      "coverPicture": "https://pbs.twimg.com/profile_banners/1468461751142617089/1684925543",
+      "description": "You can't hide from truth because, truth is all there is.\nRoisin Murphy",
+      "location": "Surfcoast",
+      "followers": 451,
+      "following": 353,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Wed Dec 08 06:06:16 +0000 2021",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 44529,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 181,
+      "statusesCount": 8082,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": "You can't hide from truth because, truth is all there is.\nRoisin Murphy"
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970733510898987089",
+    "url": "https://x.com/GognHere97799/status/1970733510898987089",
+    "twitterUrl": "https://twitter.com/GognHere97799/status/1970733510898987089",
+    "text": "@XH_Lee23 Yep, those new 6th gen prototypes were not shown on parade, the best is yet to come",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 1,
+    "quoteCount": 0,
+    "viewCount": 75,
+    "createdAt": "Wed Sep 24 06:14:18 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "GognHere97799",
+      "url": "https://x.com/GognHere97799",
+      "twitterUrl": "https://twitter.com/GognHere97799",
+      "id": "1779066511518486528",
+      "name": "Itsjustgogn",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1838400116102959106/P13xL4qr_normal.jpg",
+      "coverPicture": "",
+      "description": "Fulltime Undergrad (English Language) \nPart-time Opinion haver\nCurrent focus on HSR, AMP hater, playing for the plot",
+      "location": "Protest camp outside MHY HQ",
+      "followers": 3,
+      "following": 64,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Sat Apr 13 08:38:12 +0000 2024",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 1134,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 25,
+      "statusesCount": 418,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": "Fulltime Undergrad (English Language) \nPart-time Opinion haver\nCurrent focus on HSR, AMP hater, playing for the plot"
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970693426736996387",
+    "url": "https://x.com/KristovOle80628/status/1970693426736996387",
+    "twitterUrl": "https://twitter.com/KristovOle80628/status/1970693426736996387",
+    "text": "@XH_Lee23 Hahaha",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 0,
+    "quoteCount": 0,
+    "viewCount": 76,
+    "createdAt": "Wed Sep 24 03:35:01 +0000 2025",
+    "lang": "tl",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "KristovOle80628",
+      "url": "https://x.com/KristovOle80628",
+      "twitterUrl": "https://twitter.com/KristovOle80628",
+      "id": "1929904689421709312",
+      "name": "Kristov oleksij",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1937658599267840000/peSrw2_T_normal.jpg",
+      "coverPicture": "https://pbs.twimg.com/profile_banners/1929904689421709312/1750808885",
+      "description": "",
+      "location": "New York, USA",
+      "followers": 63,
+      "following": 9,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Tue Jun 03 14:15:29 +0000 2025",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 5,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 282,
+      "statusesCount": 2772,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": ""
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970521697691328810",
+    "url": "https://x.com/Topfragger69/status/1970521697691328810",
+    "twitterUrl": "https://twitter.com/Topfragger69/status/1970521697691328810",
+    "text": "@XH_Lee23 Nobody believes you lmao",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 1,
+    "likeCount": 2,
+    "quoteCount": 0,
+    "viewCount": 131,
+    "createdAt": "Tue Sep 23 16:12:37 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "Topfragger69",
+      "url": "https://x.com/Topfragger69",
+      "twitterUrl": "https://twitter.com/Topfragger69",
+      "id": "1714263699752402944",
+      "name": "Top fragger69",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1888384928754151424/5jTBTuG0_normal.jpg",
+      "coverPicture": "https://pbs.twimg.com/profile_banners/1714263699752402944/1732575055",
+      "description": "You hate me because you know I\u2019m right",
+      "location": "Langley, Virginia",
+      "followers": 230,
+      "following": 58,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Tue Oct 17 12:54:58 +0000 2023",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 79996,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 2083,
+      "statusesCount": 43947,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": "You hate me because you know I\u2019m right"
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970515765733327184",
+    "url": "https://x.com/goneforgood420/status/1970515765733327184",
+    "twitterUrl": "https://twitter.com/goneforgood420/status/1970515765733327184",
+    "text": "@XH_Lee23 china shows the weapons that the us let them have",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 2,
+    "quoteCount": 0,
+    "viewCount": 135,
+    "createdAt": "Tue Sep 23 15:49:03 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "goneforgood420",
+      "url": "https://x.com/goneforgood420",
+      "twitterUrl": "https://twitter.com/goneforgood420",
+      "id": "1939637976553717760",
+      "name": "timoteo",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1940539950253895680/ZFPDfRE__normal.jpg",
+      "coverPicture": "",
+      "description": "",
+      "location": "",
+      "followers": 119,
+      "following": 2,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Mon Jun 30 10:52:15 +0000 2025",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 10,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 95,
+      "statusesCount": 1220,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": ""
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970389085710881184",
+    "url": "https://x.com/SabadEmsid/status/1970389085710881184",
+    "twitterUrl": "https://twitter.com/SabadEmsid/status/1970389085710881184",
+    "text": "@XH_Lee23 \ud83d\ude0d\ud83d\ude0d\ud83d\ude0d\ud83c\udde8\ud83c\uddf3\ud83c\udde8\ud83c\uddf3\ud83c\udde8\ud83c\uddf3\ud83d\ude0d\ud83d\ude0d\ud83d\ude0d",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 1,
+    "quoteCount": 0,
+    "viewCount": 195,
+    "createdAt": "Tue Sep 23 07:25:40 +0000 2025",
+    "lang": "qme",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "SabadEmsid",
+      "url": "https://x.com/SabadEmsid",
+      "twitterUrl": "https://twitter.com/SabadEmsid",
+      "id": "1717256758312554496",
+      "name": "Sabad Emsid",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1717256894912647169/C9p_c256_normal.png",
+      "coverPicture": "",
+      "description": "",
+      "location": "",
+      "followers": 388,
+      "following": 157,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Wed Oct 25 19:08:43 +0000 2023",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 49319,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 0,
+      "statusesCount": 5858,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": ""
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1970624426451575177",
+    "url": "https://x.com/HowardODonnell4/status/1970624426451575177",
+    "twitterUrl": "https://twitter.com/HowardODonnell4/status/1970624426451575177",
+    "text": "@XH_Lee23 You don't show what you have stolen.",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 0,
+    "quoteCount": 0,
+    "viewCount": 94,
+    "createdAt": "Tue Sep 23 23:00:50 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "HowardODonnell4",
+      "url": "https://x.com/HowardODonnell4",
+      "twitterUrl": "https://twitter.com/HowardODonnell4",
+      "id": "1230598879185428481",
+      "name": "Howard O Donnell",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+      "coverPicture": "",
+      "description": "",
+      "location": "",
+      "followers": 127,
+      "following": 80,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Thu Feb 20 21:03:56 +0000 2020",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 4937,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 0,
+      "statusesCount": 6025,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": ""
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  },
+  {
+    "type": "tweet",
+    "id": "1971253026594697701",
+    "url": "https://x.com/HdtgTrfgs/status/1971253026594697701",
+    "twitterUrl": "https://twitter.com/HdtgTrfgs/status/1971253026594697701",
+    "text": "@XH_Lee23 invest more on military to prevent the US and its minions from invading china.",
+    "source": "Twitter for iPhone",
+    "retweetCount": 0,
+    "replyCount": 0,
+    "likeCount": 0,
+    "quoteCount": 0,
+    "viewCount": 23,
+    "createdAt": "Thu Sep 25 16:38:40 +0000 2025",
+    "lang": "en",
+    "bookmarkCount": 0,
+    "isReply": true,
+    "inReplyToId": "1970339354028679280",
+    "conversationId": "1970339354028679280",
+    "inReplyToUserId": "1415132116761804801",
+    "inReplyToUsername": "XH_Lee23",
+    "author": {
+      "type": "user",
+      "userName": "HdtgTrfgs",
+      "url": "https://x.com/HdtgTrfgs",
+      "twitterUrl": "https://twitter.com/HdtgTrfgs",
+      "id": "1455204043312205829",
+      "name": "trfgs hdtg",
+      "isVerified": false,
+      "isBlueVerified": false,
+      "profilePicture": "https://pbs.twimg.com/profile_images/1455204193413775377/vpX4ECS-_normal.png",
+      "coverPicture": "",
+      "description": "",
+      "location": "",
+      "followers": 3,
+      "following": 14,
+      "status": "",
+      "canDm": false,
+      "canMediaTag": true,
+      "createdAt": "Mon Nov 01 16:04:50 +0000 2021",
+      "entities": {
+        "description": {
+          "hashtags": [],
+          "symbols": [],
+          "urls": [],
+          "user_mentions": []
+        }
+      },
+      "fastFollowersCount": 0,
+      "favouritesCount": 3242,
+      "hasCustomTimelines": true,
+      "isTranslator": false,
+      "mediaCount": 1,
+      "statusesCount": 446,
+      "protected": false,
+      "withheldInCountries": [],
+      "affiliatesHighlightedLabel": {},
+      "possiblySensitive": false,
+      "pinnedTweetIds": [],
+      "profile_bio": ""
+    },
+    "extendedEntities": {},
+    "card": null,
+    "place": {},
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id_str": "1415132116761804801",
+          "indices": [
+            0,
+            9
+          ],
+          "name": "Li Zexin \u674e\u6cfd\u6b23",
+          "screen_name": "XH_Lee23"
+        }
+      ]
+    },
+    "quoted_tweet": null,
+    "retweeted_tweet": null
+  }
+]
