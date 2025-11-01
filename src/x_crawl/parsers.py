@@ -119,7 +119,7 @@ def parse_tweet(raw: dict[str, Any]) -> Tweet:
     - id → Tweet.id
     - text → Tweet.text
     - createdAt → Tweet.created_at
-    - author.id → Tweet.author_id
+    - author.name → Tweet.author_name
     - lang → Tweet.lang
     - likeCount → Tweet.like_count
     - retweetCount → Tweet.retweet_count
@@ -140,7 +140,7 @@ def parse_tweet(raw: dict[str, Any]) -> Tweet:
         ...     "id": "1234567890",
         ...     "text": "Hello World",
         ...     "createdAt": "Mon Oct 13 06:27:38 +0000 2025",
-        ...     "author": {"id": "9876543210"},
+        ...     "author": {"name": "User Name"},
         ...     "lang": "en"
         ... }
         >>> tweet = parse_tweet(raw)
@@ -148,8 +148,8 @@ def parse_tweet(raw: dict[str, Any]) -> Tweet:
     # 解析发布时间
     created_at = parse_twitter_time(raw["createdAt"])
 
-    # 提取作者 ID
-    author_id = raw["author"]["id"]
+    # 提取作者显示名称
+    author_name = raw.get("author", {}).get("name") or None
 
     # 处理空字符串的 lang（转为 None）
     lang = raw.get("lang") or None
@@ -162,7 +162,7 @@ def parse_tweet(raw: dict[str, Any]) -> Tweet:
         id=raw["id"],
         text=raw["text"],
         created_at=created_at,
-        author_id=author_id,
+        author_name=author_name,
         lang=lang,
         like_count=raw.get("likeCount", 0),
         retweet_count=raw.get("retweetCount", 0),
@@ -208,9 +208,10 @@ def parse_tweets_batch(
             tweets.append(tweet)
 
             # 解析作者（去重）
-            if "author" in raw and tweet.author_id not in users:
+            if "author" in raw:
                 user = parse_user(raw["author"])
-                users[user.id] = user
+                if user.id not in users:
+                    users[user.id] = user
 
         except Exception as e:
             logger.error(f"解析推文失败 (ID: {raw.get('id')}): {e}")

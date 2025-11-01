@@ -56,7 +56,7 @@ class Tweet(BaseModel):
     Twitter 推文对象
 
     只保留核心字段：
-    - 基础信息（id, text, created_at, author_id, lang）
+    - 基础信息（id, text, created_at, author_name, lang）
     - 互动数据（like/retweet/reply/view count）- 用于评估热度
     - 关系数据（conversation_id, is_reply, in_reply_to_id）- 用于追踪讨论
     """
@@ -68,7 +68,9 @@ class Tweet(BaseModel):
 
     created_at: datetime = Field(..., description="推文发布时间（UTC，用于时间过滤）")
 
-    author_id: str = Field(..., description="作者用户 ID（关联 User.id）")
+    author_name: str | None = Field(
+        default=None, description="推文作者显示名称（用于 CSV 导出等）"
+    )
 
     lang: str | None = Field(
         default=None,
@@ -134,13 +136,13 @@ class TweetWithContext(BaseModel):
         return self.tweet.like_count + self.tweet.retweet_count + self.tweet.reply_count
 
     @property
-    def reply_authors(self) -> set[str]:
+    def reply_authors(self) -> set[str | None]:
         """
-        回复者 ID 集合（去重）
+        回复者名称集合（去重）
 
         用于统计参与讨论的独立用户数
         """
-        return {reply.author_id for reply in self.replies}
+        return {reply.author_name for reply in self.replies}
 
     @property
     def has_discussion(self) -> bool:

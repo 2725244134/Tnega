@@ -14,6 +14,15 @@ from .models import (
     TweetWithContext,
     User,
 )
+from .text_extractor import (
+    clean_all_texts,
+    clean_tweet_text,
+    export_texts_from_collection,
+    extract_all_texts,
+    save_collection_to_csv,
+    save_texts_to_csv,
+    save_texts_to_txt,
+)
 from .tweet_fetcher import collect_tweet_discussions
 from .twitter_client import create_client
 
@@ -32,4 +41,12 @@ __all__ = [
     "create_client",
     # 核心功能
     "collect_tweet_discussions",
+    # 文本提取与导出
+    "extract_all_texts",
+    "clean_tweet_text",
+    "clean_all_texts",
+    "save_texts_to_txt",
+    "save_texts_to_csv",
+    "save_collection_to_csv",
+    "export_texts_from_collection",
 ]

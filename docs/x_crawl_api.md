@@ -72,7 +72,7 @@ class Tweet(BaseModel):
     id: str                          # 推文 ID（用于 API 调用）
     text: str                        # 推文文本（核心目标数据）
     created_at: datetime             # 发布时间（用于时间过滤）
-    author_id: str                   # 作者用户 ID
+    author_name: str | None = None   # 作者显示名称（用于 CSV 导出等）
     lang: str | None = None          # 语言代码（如 "ar", "en", "zh"）
     
     # ========== 互动数据（热度指标）==========
@@ -89,9 +89,10 @@ class Tweet(BaseModel):
 
 **字段说明**：
 - `text` - 核心目标，所有分析基于此
+- `author_name` - 作者显示名称，从 API 返回的 `author.name` 提取
 - `lang` - 判断阿拉伯地区的关键字段（`lang:ar`）
 - 互动数据 - 评估推文热度和传播力
-- 删除字段：`referenced_tweets`, `attachments`, `entities`, `geo`, `context_annotations` 等
+- 删除字段：`author_id`（不需要 ID，只保留显示名称）、`referenced_tweets`, `attachments`, `entities`, `geo`, `context_annotations` 等
 
 ---
 
@@ -117,9 +118,9 @@ class TweetWithContext(BaseModel):
         )
     
     @property
-    def reply_authors(self) -> set[str]:
-        """回复者 ID 集合（去重，用于统计参与者数量）"""
-        return {reply.author_id for reply in self.replies}
+    def reply_authors(self) -> set[str | None]:
+        """回复者名称集合（去重，用于统计参与者数量）"""
+        return {reply.author_name for reply in self.replies}
     
     @property
     def has_discussion(self) -> bool:
@@ -733,7 +734,7 @@ async def collect_with_cache(query: str, cache_dir: Path, **kwargs):
 | `id` | `Tweet.id` | str | 推文 ID |
 | `text` | `Tweet.text` | str | 推文文本 |
 | `createdAt` | `Tweet.created_at` | datetime | 发布时间（需解析） |
-| `author.id` | `Tweet.author_id` | str | 作者 ID |
+| `author.name` | `Tweet.author_name` | str \| None | 作者显示名称 |
 | `lang` | `Tweet.lang` | str | 语言代码 |
 | `likeCount` | `Tweet.like_count` | int | 点赞数 |
 | `retweetCount` | `Tweet.retweet_count` | int | 转推数 |
@@ -753,7 +754,7 @@ async def collect_with_cache(query: str, cache_dir: Path, **kwargs):
 | 函数 | 底层 API 端点 | 说明 |
 |------|--------------|------|
 | `collect_tweet_discussions` | `/twitter/tweet/advanced_search` | 搜索种子推文 |
-| ↓ | `/twitter/tweet/reply` | 获取每条推文的回复 |
+| ↓ | `/twitter/tweet/replies` | 获取每条推文的回复 |
 | ↓ | `/twitter/tweet/thread_context` | 获取每条推文的 Thread |
 
 ---
