@@ -24,6 +24,50 @@
   - 便捷属性：`all_tweets`, `all_users`, `success_rate` 等
 - [x] 验证功能正常：所有测试通过
 
+#### ✅ DONE-010: 优化 Tweet 模型设计（2025-11-01）
+**完成时间**：2025-11-01  
+**实际耗时**：2小时
+
+**完成内容**：
+- [x] 将 `Tweet.author_id: str` 改为 `Tweet.author_name: str | None`
+- [x] 更新 `parsers.py` 提取 `author.name` 而非 `author.id`
+- [x] 修复 `tweet_fetcher.py` 的 author 匹配逻辑
+- [x] 更新 `text_extractor.py` 使用 `author_name`
+- [x] 更新 `models.py` 的 `reply_authors` 属性返回名称集合
+- [x] 更新 API 文档 `x_crawl_api.md`
+- [x] 端到端测试通过（100% author_name 覆盖率）
+
+**成果**：
+- ✅ 所有推文（种子/回复/Thread）都有作者名称
+- ✅ CSV 导出无 "Unknown" 作者
+- ✅ 简化数据模型，更易于理解和使用
+
+#### ✅ DONE-011: 实现文本提取与 CSV 导出（2025-11-01）
+**完成时间**：2025-11-01  
+**实际耗时**：3小时
+
+**完成内容**：
+- [x] 创建 `src/x_crawl/text_extractor.py` 模块
+- [x] 实现 `extract_all_texts()` 提取所有文本
+- [x] 实现 `clean_tweet_text()` 文本清洗（URL/Mention/Emoji）
+- [x] 实现 `save_collection_to_csv()` 完整 CSV 导出
+- [x] 实现 `export_texts_from_collection()` 统一接口
+- [x] 支持 3 种 TXT 格式 + 2 种 CSV 模式
+- [x] 更新 `__init__.py` 导出新函数
+- [x] 创建示例脚本 `examples/demo_text_export.py`
+- [x] 创建测试脚本 `examples/test_csv_export.py`
+- [x] 测试验证通过（14条推文，9列完整数据）
+
+**CSV 导出格式**：
+```csv
+序号, 推文内容, 来源类型, 作者名称, 发布时间, 点赞数, 转发数, 回复数, 字符数
+```
+
+**测试结果**：
+- ✅ 100% author_name 覆盖率
+- ✅ utf-8-sig 编码（Excel 兼容）
+- ✅ 适合非技术人员查看
+
 **输出摘要**：
 ```python
 TweetDiscussionCollection:
