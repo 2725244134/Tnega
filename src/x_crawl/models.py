@@ -2,496 +2,334 @@
 ============================================
 Twitter API 数据模型定义
 ============================================
-基于 Twitter API v2 响应结构的 Pydantic 模型
-所有模型严格遵循类型安全原则
+基于 twitterapi.io API 的精简数据模型
+只保留核心字段，删除冗余数据
 """
 
-
 from datetime import datetime, timezone
-from typing import Literal, Any
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
+# ============================================
+# 用户实体（精简版）
+# ============================================
 
-# ============================================
-# 用户实体 (User Entity)
-# ============================================
 
 class User(BaseModel):
     """
     Twitter 用户对象
-    
-    对应 API 响应中的 User Object
-    参考: https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
+
+    只保留必要字段：
+    - 身份识别（id, username, name）
+    - 地理位置（location）- 用于判断阿拉伯地区
+    - 影响力指标（verified, followers_count）
+    - 账户时间（created_at）
     """
-    id: str = Field(
-        ...,
-        description="用户唯一标识符（数字型字符串）",
-        examples=["1234567890"]
-    )
-    
+
+    id: str = Field(..., description="用户唯一标识符")
+
     username: str = Field(
-        ...,
-        description="用户名（@handle，不含 @ 符号）",
-        min_length=1,
-        max_length=15,
-        examples=["jack"]
+        ..., description="用户名（@handle，不含 @ 符号）", examples=["elonmusk"]
     )
-    
-    name: str = Field(
-        ...,
-        description="用户显示名称",
-        max_length=50,
-        examples=["Jack Dorsey"]
-    )
-    
-    created_at: datetime | None = Field(
-        default=None,
-        description="账户创建时间（UTC）"
-    )
-    
-    description: str | None = Field(
-        default=None,
-        description="用户简介（bio）",
-        max_length=160
-    )
+
+    name: str = Field(..., description="用户显示名称", examples=["Elon Musk"])
 
     location: str | None = Field(
-        default=None,
-        description="用户填写的位置信息",
-        max_length=30
+        default=None, description="用户填写的位置信息（用于判断地区）"
     )
-    
-    verified: bool | None = Field(
-        default=None,
-        description="是否为认证账户（蓝V）"
-    )
-    
-    profile_image_url: str | None = Field(
-        default=None,
-        description="头像 URL"
-    )
-    
-    # ========== 统计数据 ==========
-    followers_count: int | None = Field(
-        default=None,
-        description="粉丝数量",
-        ge=0
-    )
-    
-    following_count: int | None = Field(
-        default=None,
-        description="关注数量",
-        ge=0
-    )
-    
-    tweet_count: int | None = Field(
-        default=None,
-        description="推文总数",
-        ge=0
-    )
-    
-    listed_count: int | None = Field(
-        default=None,
-        description="被列表收录次数",
-        ge=0
-    )
+
+    verified: bool = Field(default=False, description="是否为认证账户")
+
+    followers_count: int = Field(default=0, description="粉丝数量（影响力指标）", ge=0)
+
+    created_at: datetime | None = Field(default=None, description="账户创建时间（UTC）")
 
 
 # ============================================
-# 媒体实体 (Media Entity)
+# 推文实体（精简版）
 # ============================================
 
-class Media(BaseModel):
-    """
-    推文附带的媒体对象（图片、视频、GIF）
-    
-    参考: https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
-    """
-    media_key: str = Field(
-        ...,
-        description="媒体唯一标识符",
-        examples=["3_1234567890"]
-    )
-    
-    type: Literal["photo", "video", "animated_gif"] = Field(
-        ...,
-        description="媒体类型"
-    )
-    
-    url: str | None = Field(
-        default=None,
-        description="图片直链（仅 photo 类型）"
-    )
-    
-    preview_image_url: str | None = Field(
-        default=None,
-        description="视频预览图（video/animated_gif 类型）"
-    )
-    
-    width: int | None = Field(
-        default=None,
-        description="媒体宽度（像素）",
-        gt=0
-    )
-    
-    height: int | None = Field(
-        default=None,
-        description="媒体高度（像素）",
-        gt=0
-    )
-    
-    duration_ms: int | None = Field(
-        default=None,
-        description="视频时长（毫秒，仅 video 类型）",
-        ge=0
-    )
-
-
-# ============================================
-# 推文实体 (Tweet Entity)
-# ============================================
 
 class Tweet(BaseModel):
     """
-    Twitter 推文对象（核心数据结构）
-    
-    参考: https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
+    Twitter 推文对象
+
+    只保留核心字段：
+    - 基础信息（id, text, created_at, author_id, lang）
+    - 互动数据（like/retweet/reply/view count）- 用于评估热度
+    - 关系数据（conversation_id, is_reply, in_reply_to_id）- 用于追踪讨论
     """
-    id: str = Field(
-        ...,
-        description="推文唯一标识符（数字型字符串）",
-        examples=["1234567890123456789"]
-    )
-    
-    text: str = Field(
-        ...,
-        description="推文文本内容",
-        max_length=4096  # Twitter 长推文上限
-    )
-    
-    created_at: datetime = Field(
-        ...,
-        description="推文发布时间（UTC）"
-    )
-    
-    author_id: str = Field(
-        ...,
-        description="作者用户 ID（关联 User.id）"
-    )
-    
-    # ========== 互动数据 ==========
-    retweet_count: int | None = Field(
-        default=None,
-        description="转推数量",
-        ge=0
-    )
-    
-    reply_count: int | None = Field(
-        default=None,
-        description="回复数量",
-        ge=0
-    )
-    
-    like_count: int | None = Field(
-        default=None,
-        description="点赞数量",
-        ge=0
-    )
-    
-    quote_count: int | None = Field(
-        default=None,
-        description="引用推文数量",
-        ge=0
-    )
-    
-    impression_count: int | None = Field(
-        default=None,
-        description="展示次数（需要高级权限）",
-        ge=0
-    )
-    
-    # ========== 关系数据 ==========
-    in_reply_to_user_id: str | None = Field(
-        default=None,
-        description="回复的目标用户 ID"
-    )
-    
-    referenced_tweets: list[dict[str, Any]] | None = Field(
-        default=None,
-        description="引用的推文列表（转推/引用/回复）"
-    )
-    
-    # ========== 附件数据 ==========
-    attachments: dict[str, Any] | None = Field(
-        default=None,
-        description="附件信息（media_keys, poll_ids 等）"
-    )
-    
-    # ========== 元数据 ==========
+
+    # ========== 基础信息 ==========
+    id: str = Field(..., description="推文唯一标识符（用于 API 调用）")
+
+    text: str = Field(..., description="推文文本内容（核心目标数据）")
+
+    created_at: datetime = Field(..., description="推文发布时间（UTC，用于时间过滤）")
+
+    author_id: str = Field(..., description="作者用户 ID（关联 User.id）")
+
     lang: str | None = Field(
         default=None,
-        description="推文语言代码（ISO 639-1）",
-        examples=["en", "zh", "ja"]
-    )
-    
-    possibly_sensitive: bool | None = Field(
-        default=None,
-        description="是否可能包含敏感内容"
-    )
-    
-    source: str | None = Field(
-        default=None,
-        description="发推工具/来源",
-        examples=["Twitter for iPhone", "Twitter Web App"]
+        description="推文语言代码（ISO 639-1，用于判断地区）",
+        examples=["en", "ar", "zh"],
     )
 
+    # ========== 互动数据（热度指标）==========
+    like_count: int = Field(default=0, description="点赞数量", ge=0)
+
+    retweet_count: int = Field(default=0, description="转推数量", ge=0)
+
+    reply_count: int = Field(default=0, description="回复数量", ge=0)
+
+    view_count: int = Field(default=0, description="浏览数量", ge=0)
+
+    # ========== 关系数据 ==========
     conversation_id: str | None = Field(
-        default=None,
-        description="所属会话 ID（用于追踪评论线程）"
+        default=None, description="所属会话 ID（用于追踪讨论线程）"
     )
 
-    context_annotations: list[dict[str, Any]] | None = Field(
-        default=None,
-        description="Twitter 提供的上下文注释（主题、领域等）"
-    )
+    is_reply: bool = Field(default=False, description="是否为回复推文")
 
-    entities: dict[str, Any] | None = Field(
-        default=None,
-        description="实体解析结果（hashtags、mentions、urls 等）"
-    )
-
-    geo: dict[str, Any] | None = Field(
-        default=None,
-        description="地理位置信息（place_id 等）"
-    )
+    in_reply_to_id: str | None = Field(default=None, description="回复的目标推文 ID")
 
 
 # ============================================
-# 扩展推文（包含关联数据）
+# 推文与讨论上下文
 # ============================================
 
-class TweetWithIncludes(BaseModel):
+
+class TweetWithContext(BaseModel):
     """
-    包含 includes 扩展数据的推文
-    
-    当 API 请求带 expansions 参数时，会返回额外的关联对象
-    如 author（用户）、media（媒体）、referenced_tweets（引用推文）等
+    推文及其完整讨论上下文
+
+    包含：
+    - 种子推文（tweet）
+    - 作者信息（author）
+    - 所有回复（replies）
+    - Thread 上下文（thread_context）
     """
-    tweet: Tweet = Field(
-        ...,
-        description="核心推文数据"
+
+    tweet: Tweet = Field(..., description="种子推文")
+
+    author: User = Field(..., description="推文作者信息")
+
+    replies: list[Tweet] = Field(
+        default_factory=list, description="该推文的所有回复（平铺列表）"
     )
-    
-    author: User | None = Field(
-        default=None,
-        description="推文作者完整信息"
+
+    thread_context: list[Tweet] = Field(
+        default_factory=list, description="该推文的 Thread 上下文（包含父推文链）"
     )
-    
-    media: list[Media] | None = Field(
-        default=None,
-        description="推文附带的媒体列表"
-    )
-    
-    referenced_tweets: list[Tweet] | None = Field(
-        default=None,
-        description="被引用/转推/回复的原始推文列表"
-    )
+
+    # ========== 派生属性 ==========
+    @property
+    def total_engagement(self) -> int:
+        """
+        总互动数（点赞 + 转推 + 回复）
+
+        用于评估推文的讨论热度
+        """
+        return self.tweet.like_count + self.tweet.retweet_count + self.tweet.reply_count
+
+    @property
+    def reply_authors(self) -> set[str]:
+        """
+        回复者 ID 集合（去重）
+
+        用于统计参与讨论的独立用户数
+        """
+        return {reply.author_id for reply in self.replies}
+
+    @property
+    def has_discussion(self) -> bool:
+        """是否有讨论（回复数 > 0）"""
+        return len(self.replies) > 0
+
+    @property
+    def has_thread(self) -> bool:
+        """是否属于 Thread（上下文推文数 > 0）"""
+        return len(self.thread_context) > 0
 
 
 # ============================================
-# API 响应容器
+# 采集元信息
 # ============================================
 
 
-class SearchMetadata(BaseModel):
-    """搜索结果的运行时元信息"""
+class CollectionMetadata(BaseModel):
+    """
+    数据采集的元信息
 
-    query: str | None = Field(
-        default=None,
-        description="原始查询语句"
+    记录：
+    - 查询参数（query, query_type）
+    - 采集时间（collected_at）
+    - 统计数据（推文数量、失败情况）
+    - 时间范围（since/until timestamp）
+    """
+
+    # ========== 查询参数 ==========
+    query: str = Field(..., description="原始搜索查询语句")
+
+    query_type: Literal["Latest", "Top"] = Field(
+        ..., description="查询类型（最新/热门）"
     )
 
-    label: str | None = Field(
-        default=None,
-        description="便于识别的数据标签/别名"
-    )
-
-    start_time: datetime | None = Field(
-        default=None,
-        description="搜索起始时间"
-    )
-
-    end_time: datetime | None = Field(
-        default=None,
-        description="搜索结束时间"
-    )
-
-    scraped_at: datetime = Field(
+    collected_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
-        description="数据抓取时间（UTC）"
+        description="数据采集时间（UTC）",
     )
 
-    source: Literal["search_all", "search_recent", "manual"] = Field(
-        ...,  # source 必填，帮助跟踪数据来源
-        description="数据来源类型"
+    # ========== 统计数据 ==========
+    seed_tweet_count: int = Field(default=0, description="种子推文数量", ge=0)
+
+    total_reply_count: int = Field(default=0, description="总回复数量", ge=0)
+
+    total_thread_count: int = Field(default=0, description="总 Thread 推文数量", ge=0)
+
+    failed_tweet_ids: list[str] = Field(
+        default_factory=list, description="获取失败的推文 ID 列表"
     )
 
-    language: str | None = Field(
-        default=None,
-        description="语言过滤（如 lang:ar）"
+    # ========== 时间范围 ==========
+    since_timestamp: int | None = Field(
+        default=None, description="起始时间戳（Unix 秒）"
     )
 
-    page_count: int | None = Field(
-        default=None,
-        description="抓取的分页次数"
+    until_timestamp: int | None = Field(
+        default=None, description="结束时间戳（Unix 秒）"
     )
 
-    total_collected: int | None = Field(
-        default=None,
-        description="抓取到的推文数量"
+    # ========== 其他参数 ==========
+    max_seed_tweets: int = Field(default=0, description="最大种子推文数限制", ge=0)
+
+    max_replies_per_tweet: int = Field(
+        default=0, description="每条推文最大回复数限制", ge=0
     )
 
-    request_parameters: dict[str, Any] = Field(
-        default_factory=dict,
-        description="额外请求参数（max_results、next_token 等）"
-    )
-
-    notes: str | None = Field(
-        default=None,
-        description="补充说明"
-    )
-
-class TwitterAPIResponse(BaseModel):
-    """
-    Twitter API 通用响应结构
-    
-    包含数据主体（data）+ 扩展对象（includes）+ 元信息（meta）
-    """
-    data: list[Tweet] | Tweet | None = Field(
-        default=None,
-        description="响应主体（单个或多个推文）"
-    )
-    
-    includes: dict[str, Any] | None = Field(
-        default=None,
-        description="扩展对象（users, media, places 等）"
-    )
-    
-    meta: dict[str, Any] | None = Field(
-        default=None,
-        description="元信息（分页、结果统计等）"
-    )
-    
-    errors: list[dict[str, Any]] | None = Field(
-        default=None,
-        description="错误列表（部分失败场景）"
-    )
+    max_concurrent: int = Field(default=0, description="最大并发请求数", ge=0)
 
 
 # ============================================
-# 时间线与集合容器
+# 推文讨论采集结果
 # ============================================
 
-class Timeline(BaseModel):
+
+class TweetDiscussionCollection(BaseModel):
     """
-    用户时间线（推文列表 + 元信息）
-    
-    用于 GET /2/users/:id/tweets 等 timeline 接口
+    推文讨论采集结果（高级组合操作的返回值）
+
+    包含：
+    - 推文及其讨论上下文列表（items）
+    - 采集元信息（metadata）
+    - 便捷访问属性（all_tweets, all_users 等）
     """
-    tweets: list[Tweet] = Field(
-        default_factory=list[Tweet],
-        description="推文列表（按时间倒序）"
+
+    items: list[TweetWithContext] = Field(
+        default_factory=list, description="推文及其讨论上下文列表"
     )
-    
-    users: dict[str, User] = Field(
-        default_factory=dict[str, User],
-        description="用户映射表（user_id -> User）"
-    )
-    
-    media: dict[str, Media] = Field(
-        default_factory=dict[str, Media],
-        description="媒体映射表（media_key -> Media）"
-    )
-    
-    oldest_id: str | None = Field(
-        default=None,
-        description="最旧推文 ID（用于分页）"
-    )
-    
-    newest_id: str | None = Field(
-        default=None,
-        description="最新推文 ID（用于分页）"
-    )
-    
-    result_count: int = Field(
-        0,
-        description="本次返回的推文数量",
-        ge=0
-    )
+
+    metadata: CollectionMetadata = Field(..., description="采集元信息")
+
+    # ========== 便捷访问属性 ==========
+    @property
+    def all_tweets(self) -> list[Tweet]:
+        """
+        所有推文（种子 + 回复 + Thread，去重）
+
+        用于全局分析（如语言分布、时间分布等）
+        """
+        seen = set()
+        tweets = []
+
+        for item in self.items:
+            # 种子推文
+            if item.tweet.id not in seen:
+                seen.add(item.tweet.id)
+                tweets.append(item.tweet)
+
+            # 回复
+            for reply in item.replies:
+                if reply.id not in seen:
+                    seen.add(reply.id)
+                    tweets.append(reply)
+
+            # Thread 上下文
+            for thread_tweet in item.thread_context:
+                if thread_tweet.id not in seen:
+                    seen.add(thread_tweet.id)
+                    tweets.append(thread_tweet)
+
+        return tweets
+
+    @property
+    def all_users(self) -> dict[str, User]:
+        """
+        所有涉及的用户（user_id -> User）
+
+        注意：只包含种子推文作者，不包含回复者
+        （回复者信息需要单独获取）
+        """
+        return {item.author.id: item.author for item in self.items}
+
+    @property
+    def total_tweets(self) -> int:
+        """推文总数（去重后）"""
+        return len(self.all_tweets)
+
+    @property
+    def total_replies(self) -> int:
+        """总回复数"""
+        return sum(len(item.replies) for item in self.items)
+
+    @property
+    def total_threads(self) -> int:
+        """总 Thread 推文数"""
+        return sum(len(item.thread_context) for item in self.items)
+
+    @property
+    def success_rate(self) -> float:
+        """
+        成功率（未失败的推文数 / 总推文数）
+
+        用于评估数据采集的完整性
+        """
+        total = self.metadata.seed_tweet_count
+        failed = len(self.metadata.failed_tweet_ids)
+
+        if total == 0:
+            return 0.0
+
+        return (total - failed) / total
+
+    @property
+    def average_replies_per_tweet(self) -> float:
+        """平均每条推文的回复数"""
+        if not self.items:
+            return 0.0
+        return self.total_replies / len(self.items)
+
+
+# ============================================
+# 简化的搜索结果（可选，用于向后兼容）
+# ============================================
 
 
 class SearchResults(BaseModel):
     """
-    搜索结果容器
-    
-    用于 GET /2/tweets/search/recent 等搜索接口
+    简化的搜索结果容器
+
+    用于仅需要推文列表的场景
+    （向后兼容旧代码）
     """
-    tweets: list[Tweet] = Field(
-        default_factory=list[Tweet],
-        description="匹配的推文列表"
-    )
-    
+
+    tweets: list[Tweet] = Field(default_factory=list, description="推文列表")
+
     users: dict[str, User] = Field(
-        default_factory=dict[str, User],
-        description="关联用户映射表"
-    )
-    
-    media: dict[str, Media] = Field(
-        default_factory=dict[str, Media],
-        description="关联媒体映射表"
-    )
-    
-    next_token: str | None = Field(
-        default=None,
-        description="下一页分页令牌"
-    )
-    
-    result_count: int = Field(
-        default=0,
-        description="本次返回结果数",
-        ge=0
-    )
-    
-    total_count: int | None = Field(
-        default=None,
-        description="总匹配数（非精确，仅估算）",
-        ge=0
+        default_factory=dict, description="用户映射表（user_id -> User）"
     )
 
-    metadata: SearchMetadata | None = Field(
-        default=None,
-        description="搜索元信息（查询、时间范围、抓取批次等）"
-    )
+    result_count: int = Field(default=0, description="结果数量", ge=0)
 
-
-class UserProfile(BaseModel):
-    """
-    用户完整档案（用户信息 + 最近推文）
-    
-    组合数据结构，用于展示用户主页
-    """
-    user: User = Field(
-        ...,
-        description="用户基本信息"
-    )
-    
-    recent_tweets: list[Tweet] = Field(
-        default_factory=list[Tweet],
-        description="用户最近推文（默认最多 10 条）"
-    )
-    
-    pinned_tweet: Tweet | None = Field(
-        default=None,
-        description="置顶推文"
-    )
+    query: str | None = Field(default=None, description="原始查询语句")
