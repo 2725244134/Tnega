@@ -252,10 +252,13 @@ async def collect_tweet_discussions(
     # ========== 步骤 2: 并发获取回复和 Thread ==========
     logger.info(f"开始并发获取 {len(seed_tweets)} 条推文的回复和 Thread...")
 
+    # 创建 author_name -> User 的映射（用于匹配 tweet 和 author）
+    users_by_name = {user.name: user for user in seed_users.values()}
+
     # 创建并发任务
     semaphore = asyncio.Semaphore(max_concurrent)
 
-    async def fetch_tweet_context(tweet: Tweet, author: User) -> TweetWithContext:
+    async def fetch_tweet_context(tweet: Tweet, author: User | None) -> TweetWithContext:
         """获取单条推文的完整上下文（带并发控制）"""
         async with semaphore:
             # 获取回复
@@ -266,6 +269,14 @@ async def collect_tweet_discussions(
             if include_thread:
                 thread_context = await _get_thread_context(client, tweet.id)
 
+            # 如果 author 为 None，创建一个默认的 User 对象
+            if author is None:
+                author = User(
+                    id="unknown",
+                    username="unknown",
+                    name=tweet.author_name or "Unknown",
+                )
+
             return TweetWithContext(
                 tweet=tweet,
                 author=author,
@@ -273,9 +284,12 @@ async def collect_tweet_discussions(
                 thread_context=thread_context,
             )
 
-    # 并发执行
+    # 并发执行（通过 author_name 匹配作者）
     tasks = [
-        fetch_tweet_context(tweet, seed_users[tweet.author_id]) for tweet in seed_tweets
+        fetch_tweet_context(
+            tweet, users_by_name.get(tweet.author_name) if tweet.author_name else None
+        )
+        for tweet in seed_tweets
     ]
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
