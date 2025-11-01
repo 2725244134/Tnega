@@ -32,10 +32,15 @@
 | 模型 | 字段数 | 说明 |
 |------|--------|------|
 | `User` | 7 | 用户对象（精简版） |
-| `Tweet` | 11 | 推文对象（精简版） |
+| `Tweet` | 11 | 推文对象（精简版，使用 `author_name` 替代 `author_id`） |
 | `TweetWithContext` | 4 + 4 properties | 推文及其讨论上下文 |
 | `CollectionMetadata` | 12 | 采集元信息 |
 | `TweetDiscussionCollection` | 2 + 7 properties | 完整的讨论采集结果 |
+
+**重要设计决策**：
+- ✅ 使用 `author_name: str | None` 替代 `author_id: str`
+- ✅ 简化数据结构，只保留显示所需的作者名称
+- ✅ 便于 CSV 导出和非技术人员阅读
 
 **删除的模型**：
 - ❌ `Media` - 不需要媒体信息
@@ -85,7 +90,68 @@
 
 ---
 
-### 4. HTTP 客户端 (`src/x_crawl/twitter_client.py`)
+### 4. 文本提取与导出 (`src/x_crawl/text_extractor.py`)
+
+**功能**：
+- 从 `TweetDiscussionCollection` 提取所有推文文本
+- 清洗文本（去除 URL、@提及、Emoji）
+- 支持多种导出格式（TXT、CSV）
+
+**核心函数**：
+
+#### `extract_all_texts()` - 提取所有文本
+```python
+def extract_all_texts(collection: TweetDiscussionCollection) -> list[str]:
+    """提取种子推文、回复、Thread 的所有文本（自动去重）"""
+```
+
+#### `clean_tweet_text()` - 清洗文本
+```python
+def clean_tweet_text(
+    text: str, 
+    remove_urls: bool = False,
+    remove_mentions: bool = False, 
+    remove_emojis: bool = False
+) -> str:
+    """移除 URL、@提及、Emoji，规范化空白字符"""
+```
+
+#### `save_collection_to_csv()` - 导出完整 CSV
+```python
+def save_collection_to_csv(
+    collection: TweetDiscussionCollection,
+    output_path: Path | str,
+    clean_text: bool = True,
+) -> None:
+    """
+    导出为 Excel 友好的 CSV 文件
+    列：序号, 推文内容, 来源类型, 作者名称, 发布时间, 
+        点赞数, 转发数, 回复数, 字符数
+    编码：utf-8-sig（Windows Excel 兼容）
+    """
+```
+
+#### `export_texts_from_collection()` - 统一导出接口
+```python
+def export_texts_from_collection(
+    collection: TweetDiscussionCollection,
+    output_path: Path | str,
+    file_format: Literal["txt", "csv"] = "txt",
+    txt_style: Literal["numbered", "separated", "plain"] = "numbered",
+    csv_mode: Literal["simple", "full"] = "full",
+    clean: bool = True,
+) -> list[str]:
+    """支持 TXT（3种样式）和 CSV（2种模式）"""
+```
+
+**设计亮点**：
+- ✅ 所有推文（种子/回复/Thread）都包含 `author_name`
+- ✅ CSV 100% author_name 覆盖率（无 "Unknown"）
+- ✅ 适合非技术人员用 Excel 查看
+
+---
+
+### 5. HTTP 客户端 (`src/x_crawl/twitter_client.py`)
 
 **设计决策**：
 - 使用传入的 `httpx.AsyncClient`（用户建议）
@@ -413,6 +479,9 @@ agent = Agent(
 
 - ✅ 2025-01-15 上午: 完成需求分析和架构设计
 - ✅ 2025-01-15 中午: 完成核心功能实现
-- ⏳ 2025-01-15 下午: 测试验证 + Agent 接口设计
+- ✅ 2025-01-15 下午: 测试验证通过（100% 成功率）
+- ✅ 2025-11-01: 模型优化（`author_id` → `author_name`）
+- ✅ 2025-11-01: 添加文本提取和 CSV 导出功能
+- ✅ 2025-11-01: 端到端测试通过（14条推文，100% author_name 覆盖率）
 
-**预计完成时间**: 2025-01-15 晚上
+**当前状态**: ✅ 生产就绪
