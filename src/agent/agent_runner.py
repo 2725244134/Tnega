@@ -43,5 +43,7 @@ async def run_agent(user_request: str, target_count: int = 2000, max_attempts: i
         raise ValueError("采集失败，未获得任何推文。")
 
 if __name__ == "__main__":
-    # 示例测试
-    asyncio.run(run_agent("找阿拉伯地区对中国 93 阅兵的讨论"))
+    # 支持从命令行传入查询，便于测试不同 query
+    import sys
+    query = sys.argv[1] if len(sys.argv) > 1 else "找阿拉伯地区对中国 93 阅兵的讨论"
+    asyncio.run(run_agent(query))

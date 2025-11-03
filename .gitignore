@@ -4,8 +4,9 @@ __pycache__/
 *$py.class
 .serena/
 # C extensions
-*.so
-
+*.so*
+*.csv
+*.json
 # Distribution / packaging
 .Python
 build/
