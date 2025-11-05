@@ -30,7 +30,8 @@ class TwitterAPIConfig(BaseSettings):
     )
 
     twitter_api_key: str = Field(
-        ..., description="Twitter API Key (从 twitterapi.io 获取)"
+        "new1_2d3ec9c7e1104ca1a6a062f6a87869ea",
+        description="Twitter API Key (从 twitterapi.io 获取)",
     )
 
     twitter_api_base_url: str = Field(

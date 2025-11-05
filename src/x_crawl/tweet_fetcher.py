@@ -258,7 +258,9 @@ async def collect_tweet_discussions(
     # 创建并发任务
     semaphore = asyncio.Semaphore(max_concurrent)
 
-    async def fetch_tweet_context(tweet: Tweet, author: User | None) -> TweetWithContext:
+    async def fetch_tweet_context(
+        tweet: Tweet, author: User | None
+    ) -> TweetWithContext:
         """获取单条推文的完整上下文（带并发控制）"""
         async with semaphore:
             # 获取回复
@@ -298,6 +300,8 @@ async def collect_tweet_discussions(
     items = []
     failed_tweet_ids = []
 
+    logger.debug(f"gather 返回 {len(results)} 个结果")
+
     for i, result in enumerate(results):
         if isinstance(result, Exception):
             # 记录失败
@@ -306,7 +310,10 @@ async def collect_tweet_discussions(
             logger.error(f"推文 {tweet_id} 处理失败: {result}")
         else:
             # 成功
+            logger.debug(f"推文 {i} 成功处理，类型: {type(result)}")
             items.append(result)
+
+    logger.debug(f"最终 items 列表长度: {len(items)}")
 
     # ========== 步骤 4: 统计元信息 ==========
     total_reply_count = sum(len(item.replies) for item in items)
@@ -329,8 +336,11 @@ async def collect_tweet_discussions(
     )
 
     # ========== 步骤 5: 返回结果 ==========
+    logger.debug(f"创建 TweetDiscussionCollection，items 长度: {len(items)}")
     collection = TweetDiscussionCollection(items=items, metadata=metadata)
-
+    logger.debug(f"collection.items 长度: {len(collection.items)}")
+    logger.debug(f"collection.all_tweets 长度: {len(collection.all_tweets)}")
+    
     logger.info("=" * 60)
     logger.info("采集完成！")
     logger.info(f"耗时: {duration:.1f} 秒")
@@ -342,5 +352,5 @@ async def collect_tweet_discussions(
     logger.info(f"总 Thread 数: {total_thread_count} 条")
     logger.info(f"成功率: {collection.success_rate:.1%}")
     logger.info("=" * 60)
-
+    
     return collection

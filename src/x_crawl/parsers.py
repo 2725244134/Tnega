@@ -198,6 +198,10 @@ def parse_tweets_batch(
         >>> print(f"解析了 {len(tweets)} 条推文")
         >>> print(f"涉及 {len(users)} 个用户")
     """
+    logger.debug(f"parse_tweets_batch 收到 {len(raw_tweets)} 条原始推文")
+    if len(raw_tweets) > 0:
+        logger.debug(f"第一条原始推文: {raw_tweets[0]}")
+
     tweets = []
     users = {}
 
@@ -215,7 +219,9 @@ def parse_tweets_batch(
 
         except Exception as e:
             logger.error(f"解析推文失败 (ID: {raw.get('id')}): {e}")
+            logger.error(f"原始数据: {raw}")
             # 跳过无法解析的推文，继续处理其他推文
             continue
 
+    logger.debug(f"parse_tweets_batch 返回 {len(tweets)} 条推文，{len(users)} 个用户")
     return tweets, users

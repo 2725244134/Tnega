@@ -6,6 +6,12 @@ x_crawl - Twitter 数据采集层
 """
 
 from .config import TwitterAPIConfig, get_config
+from .data_collector import (
+    CollectionRequest,
+    CollectionResponse,
+    collect_twitter_data,
+    validate_query,
+)
 from .models import (
     CollectionMetadata,
     SearchResults,
@@ -39,7 +45,12 @@ __all__ = [
     "get_config",
     # HTTP 客户端
     "create_client",
-    # 核心功能
+    # 统一数据采集接口（推荐给 agent 层使用）
+    "collect_twitter_data",
+    "CollectionRequest",
+    "CollectionResponse",
+    "validate_query",
+    # 核心功能（底层实现，不推荐直接使用）
     "collect_tweet_discussions",
     # 文本提取与导出
     "extract_all_texts",
